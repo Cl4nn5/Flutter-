@@ -1,43 +1,54 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter Demo',
-      // theme: ThemeData(
-      //   primarySwatch: Colors.blue, // 견본 색상
-      // ),
-      home: MyCard(),
+    return MaterialApp(
+      title: "AppBar",
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+      ),
+      home: MyPage(),
     );
   }
 }
 
-class MyCard extends StatelessWidget {
-  const MyCard({Key? key}) : super(key: key);
+class MyPage extends StatelessWidget {
+  const MyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('근무형태 계산기'),
+        title: Text('appBar'),
         centerTitle: true,
-        backgroundColor: Colors.redAccent,
         elevation: 0,
-      ),
-      body: Center(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Hello"),
-            Text("Hello"),
-            Text("Hello"),
-          ],
+        // leading: widget이나 icon등을 appBar의 왼쪽에 배치
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {
+            print('menu button is clicked');
+          },
         ),
+        // actions: widget이나 icon등을 appBar의 오른쪽에 배치
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              print('shopping cart button is clicked');
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              print('search button is clicked');
+            },
+          ),
+        ],
       ),
     );
   }
